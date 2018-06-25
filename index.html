@@ -14,8 +14,8 @@
 
         body {
             font-family: Futura, Arial, Helvetica, sans-serif;
-            color: #fff;
-            background: #3b5998;
+            color: #000;
+            background: #fff;
         }
 
         h1, h2, h3 {
@@ -29,7 +29,7 @@
         }
 
         .header {
-            background: #324772;
+            background: #3b5998;
         }
     </style>
 </head>
@@ -37,7 +37,13 @@
     <h1 class="header">Learn FBLogin Node</h1>
 
     <div class="container">
-        <h5 id="response"></h5>
+        <br>
+        <fb:login-button
+            scope="public_profile,email"
+            onlogin="checkLoginState();">
+        </fb:login-button>
+
+        <p id="response"></p>
     </div>
 
     <script>
