@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learn FBLogin Node</title>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Futura, Arial, Helvetica, sans-serif;
+            color: #fff;
+            background: #3b5998;
+        }
+
+        h1, h2, h3 {
+            font-family: Optima, Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 15px;
+        }
+
+        .container {
+            margin: 0 15px;
+        }
+
+        .header {
+            background: #324772;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="header">Learn FBLogin Node</h1>
+
+    <div class="container">
+        <h5 id="response"></h5>
+    </div>
+
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '970329593145062',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v2.8'
+            });
+                
+            FB.AppEvents.logPageView();   
+            
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        };
+      
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function statusChangeCallback(response) {
+            var responseHtml = document.getElementById('response');
+
+            if(response.status === 'connected') {
+                responseHtml.innerText = 'Logged in and authenticated';
+            } else {
+                responseHtml.innerText = 'Not authenticated';
+            }
+        }
+    </script>
+</body>
+</html>
